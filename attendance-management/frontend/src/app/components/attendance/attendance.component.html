@@ -1,0 +1,44 @@
+<p>attendance works!</p>
+<div class="container">
+    <h2>📅 Attendance Management</h2>
+  
+    <!-- ✏️ Add Attendance Form -->
+    <form (ngSubmit)="addAttendance()">
+      <label>Student Name:</label>
+      <input type="text" [(ngModel)]="newAttendance.name" name="studentName" required />
+  
+      <label>Date:</label>
+      <input type="date" [(ngModel)]="newAttendance.date" name="date" required />
+  
+      <label>Status:</label>
+      <select [(ngModel)]="newAttendance.status" name="present" required>
+        <option [ngValue]="true">Present</option>
+        <option [ngValue]="false">Absent</option>
+      </select>
+  
+      <button type="submit">Add Attendance</button>
+    </form>
+  
+    <hr />
+  
+    <!-- 📋 Attendance Records Table -->
+    <h3>Attendance List</h3>
+    <table>
+      <thead>
+        <tr>
+          <th>ID</th>
+          <th>Student Name</th>
+          <th>Date</th>
+          <th>Status</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let record of attendances">
+          <td>{{ record.id }}</td>
+          <td>{{ record.studentName }}</td>
+          <td>{{ record.date }}</td>
+          <td>{{ record.present ? 'Present' : 'Absent' }}</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
